@@ -25,6 +25,7 @@ app.use(bodyParser.json());
 
 // Routes
 app.use('/api/v1', routeIndex.authRouter);
+app.use('/api/v1', routeIndex.paymentRouter);
 
 app.use('*', (req: Request, res: Response, next: NextFunction) => res.status(404).json({ error: true, message: 'Not found.' }));
 
