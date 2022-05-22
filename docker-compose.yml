@@ -1,0 +1,36 @@
+version: "3.7"
+
+services:
+  app:
+    build: .
+    command: npm start
+    volumes:
+      - ./:/app
+      - /app/node_modules
+    ports:
+      - 3001:3001
+    environment:
+      NODE_ENV: production
+      NODE_PORT: 3001
+      MONGO_ADDRESS: mongodb
+      MONGODB_URI: mongodb://bits:bits@mongodb:27017/bits-api
+      MONGODB_URI_TEST: mongodb://bits:bits@mongodb:27017/bits-api-test
+    env_file:
+      - ./src/config/config.ts
+    depends_on:
+      - mongodb
+  mongodb:
+    image: "mongo"
+    restart: always
+    environment:
+      - MONGO_INITDB_DATABASE=bits-api 
+      - MONGO_INITDB_DATABASE_TEST=bits-api-test
+      - MONGO_INITDB_ROOT_USERNAME=bits
+      - MONGO_INITDB_ROOT_PASSWORD=bits
+    volumes:
+      - data:/data/db
+    ports:
+      - '27017:27017'
+
+volumes:
+  data:
