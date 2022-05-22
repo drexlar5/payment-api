@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "lib": ["es2018", "ESNext.AsyncIterable"],
+    "emitDecoratorMetadata": true,
+
+    "experimentalDecorators": true,
+
+    "allowSyntheticDefaultImports": true,
+    // Search under node_modules for non-relative imports.
+    "moduleResolution": "node",
+    // Process & infer types from .js files.ß
+    "allowJs": false,
+    // Enable strictest settings like strictNullChecks & noImplicitAny.
+    "strict": false,
+    // Don't allow accessing (properties of) potentially null values
+    "strictNullChecks": true,
+    // Disallow features that require cross-file information for emit.
+    "isolatedModules": true,
+    // Import non-ES modules as default imports.
+    "esModuleInterop": true,
+    "baseUrl": ".",
+    "noEmit": true,
+    "outDir": "dist",
+    "rootDir": "src",
+    "removeComments": true,
+    "incremental": true,
+    "types": ["node", "jest", "@testing-library/jest-dom"],
+    "downlevelIteration": true
+  },
+  "files": ["global.d.ts"],
+  "exclude": ["node_modules", "build"],
+  "include": ["src/**/*.ts", "__tests__/**/*.ts", "__tests__/unit/payment.test.ts", "__tests__/unit/auth.test.ts", "__tests__/api/payment.test.ts"],
+}
