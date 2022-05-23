@@ -25,6 +25,7 @@ export default class PaymentService {
       const newPaymentObject = new PaymentModel({
         paymentId: paymentInfo.paymentId,
         userId: paymentInfo.userId,
+        paymentDate: paymentInfo.paymentDate,
         paymentDescription: paymentInfo.paymentDescription,
         currency: paymentInfo.currency,
         amount: paymentInfo.amount,

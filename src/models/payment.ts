@@ -19,6 +19,10 @@ const paymentSchema = new Schema({
     type: String,
     required: true,
   },
+  paymentDate: {
+    type: String,
+    required: true,
+  },
   currency: {
     type: String,
     required: true,

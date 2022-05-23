@@ -6,6 +6,8 @@ import * as routeIndex from './src/routes';
 import { cors } from './src/middleware/utils';
 import { globalErrorHandler } from './src/utils/errors';
 import {connectToDb} from './src/config/connection';
+import swaggerUi from 'swagger-ui-express';
+import { swaggerDocument } from './swagger';
 
 const options = {
   uploadDir: os.tmpdir(),
@@ -23,9 +25,12 @@ app.use(formData.parse(options));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-// Routes
+// app routes
 app.use('/api/v1', routeIndex.authRouter);
 app.use('/api/v1', routeIndex.paymentRouter);
+
+// swagger route
+app.use('/api/v1/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.use('*', (req: Request, res: Response, next: NextFunction) => res.status(404).json({ error: true, message: 'Not found.' }));
 

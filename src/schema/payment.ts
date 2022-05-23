@@ -12,7 +12,10 @@ const paymentValidation = Joi.object({
         .pattern(new RegExp('[a-zA-Z0-9]{3,10}$'))
         .required(),
     paymentId: Joi.string()
-        .pattern(new RegExp('[a-zA-Z0-9]{3,15}$'))
+        .pattern(new RegExp('[a-zA-Z0-9\-\]{3,15}$'))
+        .required(),
+    paymentDate: Joi.string()
+        .pattern(new RegExp('[a-zA-Z0-9\-:\]{3,15}$'))
         .required(),
     userId: Joi.string()
         .pattern(new RegExp('[a-zA-Z0-9]{3,20}$'))
