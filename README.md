@@ -1,6 +1,6 @@
-# bits-api
+# sample-payment-api
 
-A sample bits payment api
+A sample payment api
 
 **Author:** Michael Agboola
 
